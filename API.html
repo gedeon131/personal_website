@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Créer une API avec Node.js</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    code {
+      color: #e74c3c;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🛠️ Comment créer une API : Guide simple et pratique pour débutants</h1>
+
+  <p>Créer une <strong>API</strong> (Application Programming Interface) est devenu une compétence essentielle pour tout développeur web. Une API permet à différentes applications de <em>communiquer entre elles</em>.</p>
+
+  <h2>🔍 Qu’est-ce qu’une API ?</h2>
+  <p>Une API est un ensemble de règles permettant à un programme d’accéder aux fonctionnalités ou aux données d’un autre. Par exemple :</p>
+  <ul>
+    <li>Une app météo utilise une API pour récupérer la température.</li>
+    <li>Une app mobile utilise une API pour charger un profil utilisateur.</li>
+  </ul>
+
+  <h2>🧰 Technologies utilisées</h2>
+  <ul>
+    <li>Node.js</li>
+    <li>Express.js</li>
+    <li>Postman ou curl</li>
+  </ul>
+
+  <h2>🚀 Étapes pour créer une API simple</h2>
+
+  <h3>1. Installer Node.js</h3>
+  <p>Téléchargez Node.js sur <a href="https://nodejs.org/" target="_blank">nodejs.org</a></p>
+
+  <h3>2. Créer un projet</h3>
+  <pre><code>mkdir mon-api
+cd mon-api
+npm init -y</code></pre>
+
+  <h3>3. Installer Express</h3>
+  <pre><code>npm install express</code></pre>
+
+  <h3>4. Créer le fichier <code>index.js</code></h3>
+  <pre><code>const express = require('express');
+const app = express();
+const port = 3000;
+
+app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.send('Bienvenue sur mon API !');
+});
+
+app.get('/users', (req, res) => {
+  res.json([{ id: 1, nom: 'Alice' }, { id: 2, nom: 'Bob' }]);
+});
+
+app.post('/users', (req, res) => {
+  const nouvelUtilisateur = req.body;
+  res.status(201).json({ message: 'Utilisateur ajouté', utilisateur: nouvelUtilisateur });
+});
+
+app.listen(port, () => {
+  console.log(`API en cours sur http://localhost:${port}`);
+});</code></pre>
+
+  <h3>5. Lancer le serveur</h3>
+  <pre><code>node index.js</code></pre>
+
+  <h2>🧪 Tester l’API</h2>
+  <p>Utilisez <strong>Postman</strong> pour tester les routes <code>GET</code> et <code>POST</code>.</p>
+
+  <h2>🔁 Méthodes HTTP</h2>
+  <table>
+    <tr>
+      <th>Méthode</th>
+      <th>Utilité</th>
+    </tr>
+    <tr>
+      <td>GET</td>
+      <td>Lire des données</td>
+    </tr>
+    <tr>
+      <td>POST</td>
+      <td>Créer une ressource</td>
+    </tr>
+    <tr>
+      <td>PUT</td>
+      <td>Modifier une ressource</td>
+    </tr>
+    <tr>
+      <td>DELETE</td>
+      <td>Supprimer une ressource</td>
+    </tr>
+  </table>
+
+  <h2>✅ Ce que vous avez appris</h2>
+  <ul>
+    <li>Les bases d’une API REST</li>
+    <li>Créer une API avec Express</li>
+    <li>Tester les routes HTTP</li>
+  </ul>
+
+  <h2>🚀 Pour aller plus loin</h2>
+  <ul>
+    <li>Connexion à une base de données</li>
+    <li>Authentification (JWT)</li>
+    <li>Organisation des fichiers</li>
+  </ul>
+
+  <h2>✍️ Conclusion</h2>
+  <p>Avec Node.js et Express, créer une API devient simple. C’est une compétence fondamentale pour tout développeur moderne.</p>
+
+</body>
+</html>
